@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+    }
+
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* use "cover" se quiser preencher tudo */
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="img" />
+
+  <script>
+    fetch("./images.json")
+      .then(res => res.json())
+      .then(images => {
+        const random = images[Math.floor(Math.random() * images.length)];
+        document.getElementById("img").src = random;
+      })
+      .catch(err => {
+        console.error("Erro ao carregar imagens:", err);
+      });
+  </script>
+
+</body>
+</html>
